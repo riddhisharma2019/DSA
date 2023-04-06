@@ -1,0 +1,57 @@
+ public class LinkedList {   // structure
+   
+   private Node head;
+   
+   public static class Node{
+       int data;
+       Node next;
+       
+       Node(int data){
+           this.data=data;
+           next=null;
+       }
+       
+   }
+ // traverse the list 
+      
+      public boolean search(Node data, int x){
+          Node current = head;
+          while(current!=null){
+              System.out.println(current.data+ " ");
+              if(current.data==x){
+                  return true;
+                   current =current.next;
+              }
+               return false;
+          }
+          
+           
+    
+    
+    // adding to begining
+     public void insert(int data){
+        
+        Node newNode= new Node(data);
+        newNode.next= head;
+        head =newNode;
+    }
+ 
+  public static void main(Strings[] args){
+      LinkedList lii =new LinkedList();
+       
+       int x=22;
+      lii.insert(10);
+       lii.insert(22);
+       lii.insert(33);
+       lii.insert(3);
+       
+       // function call
+       
+       if(lii.search(lii.head, x))
+        System.out.println("Yes");
+        else
+            System.out.println("No");
+      
+  }
+      }
+   
