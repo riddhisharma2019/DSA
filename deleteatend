@@ -1,0 +1,79 @@
+public class LinkedList {
+	
+	static Node head;
+
+    // Node Class
+    class Node{
+        int data;
+        Node next;
+
+        Node(int x) // parameterized constructor
+        {
+            data = x;
+            next = null;
+        }
+    }
+
+     static Node deleteend()
+    {
+       if(head==null) 
+    	   return null;
+       
+       if(head.next==null) {
+    	   return null;
+       }
+        Node current= head;
+        while(current.next.next!=null) {
+        	current = current.next;
+        	current.next=null;
+        	
+        	return head;
+        }
+       
+    }
+       
+       public void insert(int data)
+    {
+        Node newNode = new Node(data);
+        newNode.next = head;
+        head = newNode;
+
+     
+    }
+
+    public void display()
+    {
+        Node node = head;
+        //as linked list will end when Node reaches Null
+        while(node!=null)
+        {
+            System.out.print(node.data + " ");
+            node = node.next;
+        }
+        System.out.println("\n");
+    }
+
+public static void main(String[] args) {
+	
+	LinkedList ll = new LinkedList();
+
+   
+    ll.insert(5);
+    ll.insert(4);
+    ll.insert(3);
+    ll.insert(2);
+    ll.insert(1);
+
+    ll.display();
+
+    ll.deleteend();
+    ll.display();
+    ll.deleteend();
+    ll.display();
+    
+
+   
+}
+
+	
+}
