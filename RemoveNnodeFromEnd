@@ -1,0 +1,95 @@
+package org.example.linkedlist;
+
+public class RemoveNnode {
+
+class Node{
+
+    int data;
+    Node next;
+
+    Node(int data){
+        this.data =data;
+        this.next =null;
+    }
+}
+
+Node head;
+
+//function to insert node at beginner
+
+    public void push(int data){
+
+        Node new_node =new Node(data);
+        new_node.next = head;
+        head = new_node;
+    }
+
+    //print the node in the linkedlist
+
+    public void display(){
+
+        Node temp = head;
+        while(temp!=null){
+            System.out.println(temp.data);
+            temp=temp.next;
+        }
+    }
+
+    public void deleteNthNodeFromEnd( int n){
+
+        Node fast = head;
+        Node slow = head;
+
+        for(int i=0;i<n;i++){
+
+            fast= fast.next;
+
+        }
+        if(fast==null){
+            head= head.next;
+            return;
+        }
+
+        while(fast.next !=null){
+
+            fast=fast.next;
+            slow=slow.next;
+        }
+
+        slow.next=slow.next.next;
+        return;
+
+
+    }
+ public static void main(String[] args){
+
+
+     RemoveNnode n = new RemoveNnode();
+     n.push(5);
+     n.push(4);
+     n.push(3);
+     n.push(2);
+     n.push(1);
+
+
+     System.out.println(
+             "display Linked List .......");
+     n.display();
+
+     System.out.println(
+             " Delete nth Node from the End *****");
+     n.deleteNthNodeFromEnd( 2);
+
+     System.out.println(
+             "*********** Linked List after Deletion *****");
+     n.display();
+ }
+
+
+ }
+
+
+
+
+
+
