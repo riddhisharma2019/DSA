@@ -1,0 +1,72 @@
+package org.example.linkedlist;
+
+public class RemoveDuplicateSorted {
+
+    class ListNode {
+
+        int data;
+        ListNode next;
+
+        ListNode(int data) {
+            this.data = data;
+            this.next = null;
+        }
+
+    }
+
+    static ListNode head;
+
+
+    public void push(int data) {
+        /* 1 & 2: Allocate the Node &
+                  Put in the data*/
+        ListNode new_node = new ListNode(data);
+
+        /* 3. Make next of new Node as head */
+        new_node.next = head;
+
+        /* 4. Move the head to point to new Node */
+        head = new_node;
+    }
+
+
+    void print() {
+        ListNode temp = head;
+        while (temp != null) {
+            System.out.print(temp.data + " ");
+            temp = temp.next;
+        }
+        System.out.println();
+    }
+
+    public ListNode removeDuplicate(ListNode head) {
+        ListNode current = head;
+
+        while (current != null && current.next != null) {
+            if (current.data == current.next.data) {
+                current.next = current.next.next;
+            } else {
+                current = current.next;
+            }
+        }
+
+        return head;
+
+    }
+
+    public static void main(String[] args) {
+        RemoveDuplicateSorted rem = new RemoveDuplicateSorted();
+        rem.push(20);
+        rem.push(13);
+        rem.push(13);
+        rem.push(11);
+        rem.push(11);
+        rem.push(11);
+        rem.print();
+
+        rem.removeDuplicate(head);
+        rem.print();
+
+
+    }
+}
