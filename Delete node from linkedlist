@@ -1,0 +1,22 @@
+ public Node deleteNode(Node head){
+  if(head==null || head.next==null){
+  return null;             // there is no middle node.
+  }
+
+  Node slow = head;
+  Node fast = head;
+  Node prev = null;                  //Inside the loop, 
+                                      prev keeps track of the node just before slow, 
+                                     so that when the loop ends, 
+                                     prev will point to the node just before the middle node.
+
+  while(fast!=null && fast.next!=null){
+  prev = slow;
+  slow = slow.next;
+  fast = fast.nest.next;
+}
+
+prev.next = slow.next;
+return head;
+
+ }
