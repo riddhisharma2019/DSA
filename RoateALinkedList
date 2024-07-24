@@ -1,0 +1,37 @@
+public class LinkedList {
+    Node head;
+
+    // Function to rotate the linked list to the right by k positions
+    public void rotateRight(int k) {
+        if (head == null || k == 0) {
+            return;
+        }
+
+        // Calculate the length of the linked list
+        Node current = head;
+        int length = 1;
+        while (current.next != null) {
+            current = current.next;
+            length++;
+        }
+
+        // Connect the last node to the head to make it circular
+        current.next = head;
+
+        // Adjust k to be within the range of the list length
+        k = k % length;
+        int stepsToNewHead = length - k;
+
+        // Find the new head and tail
+        Node newTail = head;
+        for (int i = 1; i < stepsToNewHead; i++) {
+            newTail = newTail.next;
+        }
+        Node newHead = newTail.next;
+
+        // Break the loop
+        newTail.next = null;
+
+        // Update the head
+        head = newHead;
+    }
